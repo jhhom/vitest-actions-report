@@ -36,8 +36,12 @@ jobs:
       - uses: pnpm/action-setup@v4
         with:
           version: 9
-      - run: pnpm install
-      - run: pnpm test
+      - name: Run tests
+        run: pnpm install
+        run: pnpm test
+      - name: List files in the repository
+        run: |
+          ls ${{ github.workspace }}
       - name: Checkout
         uses: actions/checkout@v4
       - name: Setup Pages
