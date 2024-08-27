@@ -24,8 +24,10 @@ concurrency:
 jobs:
   # Single deploy job since we're just deploying
   test:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -36,18 +38,6 @@ jobs:
           version: 9
       - run: pnpm install
       - run: pnpm test
-      - uses: actions/upload-artifact@v4
-        with:
-          name: test-report
-          path: |
-            test-report
-
-  deploy-test-report:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    steps:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Setup Pages
