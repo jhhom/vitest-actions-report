@@ -37,8 +37,9 @@ jobs:
         with:
           version: 9
       - name: Run tests
-        run: pnpm install
-        run: pnpm test
+        run: |
+          pnpm install
+          pnpm test
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
