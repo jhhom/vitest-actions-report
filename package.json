@@ -7,6 +7,7 @@
   "scripts": {
     "test": "npx vitest",
     "test:ui": "npx vitest --ui",
+    "test:github-actions": "GITHUB_ACTIONS=true npx vitest",
     "preview-test-report": "npx vite preview --outDir ./test-report"
   },
   "keywords": [],
